@@ -15,3 +15,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'PuntosController@index');
 Route::post('/reciclaje', 'PuntosController@store');
+Route::get('/editaPunto/{id}', 'PuntosController@show');
+Route::post('/edicionPunto', 'PuntosController@actualiza');
+Route::get('/borraPunto/{id}', 'PuntosController@destroy');

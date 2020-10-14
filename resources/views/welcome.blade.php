@@ -14,7 +14,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="#">Puntos de reciclaje <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/">Puntos de reciclaje <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Recolectores</a>
@@ -54,14 +54,6 @@
                 </div>
                 </form>
             </div>
-
-            <div>
-                @if(!is_null($puntos))
-                    @foreach($puntos as $p)
-                        <p>{{$p->tipo_basura}}</p>
-                    @endforeach
-                @endif
-            </div>
         </div>
 
         <table class="table table-striped mt-2 col-lg-8">
@@ -84,8 +76,8 @@
                 <td>{{$p->hora_apertura}}</td>
                 <td>{{$p->hora_cierre}}</td>
                 <td>
-                <a href="http://">Editar</a>
-                <a href="http://">Borrar</a>
+                <a href="/editaPunto/{{$p->id}}">Editar</a>
+                <a href="/borraPunto/{{$p->id}}">Borrar</a>
                 </td>
                 </tr>
                 @endforeach

@@ -59,7 +59,10 @@ class PuntosController extends Controller
      */
     public function show($id)
     {
-        //
+        //buscar el dato
+        $punto = puntos::find($id);
+        //pasarlo a la vista
+        return view('editaPunto')->with('punto', $punto);
     }
 
     /**
@@ -85,6 +88,20 @@ class PuntosController extends Controller
         //
     }
 
+    public function actualiza(Request $request)
+    {
+        $punto = puntos::find($request->id);
+        if(!is_null($punto))
+        {
+            $punto->tipo_basura = $request->tipo_basura;
+            $punto->direccion = $request->direccion;
+            $punto->hora_apertura = $request->hora_apertura;
+            $punto->hora_cierre = $request->hora_cierre;
+            $punto->save();   
+        }
+        return redirect('/');
+    }
+
     /**
      * Remove the specified resource from storage.
      *
@@ -93,6 +110,8 @@ class PuntosController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $punto = puntos::find($id);
+        $punto->delete();
+        return redirect('/');
     }
 }
