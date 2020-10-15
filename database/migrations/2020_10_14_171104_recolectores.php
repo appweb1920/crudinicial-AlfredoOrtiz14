@@ -28,6 +28,6 @@ class Recolectores extends Migration
      */
     public function down()
     {
-        Schema::drop('puntos');
+        Schema::drop('recolectores');
     }
 }

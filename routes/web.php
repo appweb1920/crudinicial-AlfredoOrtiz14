@@ -20,3 +20,7 @@ Route::post('/edicionPunto', 'PuntosController@actualiza');
 Route::get('/borraPunto/{id}', 'PuntosController@destroy');
 
 Route::get('/recolectores', 'RecolectoresController@index');
+Route::post('/nuevoRecolector', 'RecolectoresController@store');
+Route::get('/editaRecolector/{id}', 'RecolectoresController@show');
+Route::post('/edicionRecolector', 'RecolectoresController@actualiza');
+Route::get('/borraRecolector/{id}', 'RecolectoresController@destroy');

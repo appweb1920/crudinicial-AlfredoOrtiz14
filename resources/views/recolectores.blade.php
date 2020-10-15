@@ -19,9 +19,6 @@
             <li class="nav-item active">
                 <a class="nav-link" href="/recolectores">Recolectores</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Pricing</a>
-            </li>
         </ul>
     </nav>
 
@@ -31,12 +28,12 @@
                 <form action="/nuevoRecolector" method="post">
                 @csrf
                 <div class="form-group">
-                    <label for="tipoBasura">Nombre:</label>
-                    <input type="text" name="tipoBasura" id="">
+                    <label for="name">Nombre:</label>
+                    <input type="text" name="nombre" id="">
                 </div>
                 <div class="form-group">
-                    <label for="direccion">Dias de trabajo:</label>
-                    <input type="text" name="direccion" id="">
+                    <label for="dias_recoleccion">Dias de recolección:</label>
+                    <input type="text" name="dias_recoleccion" id="">
                 </div>
                 <div class="form-group">
                     <input name="guardar" id="" class="btn btn-primary" type="submit" value="Guardar">
@@ -54,7 +51,19 @@
                 </tr>
             </thead>
             <tbody>
-
+                @if(!is_null($recolectores))
+                    @foreach($recolectores as $r)
+                    
+                    <tr>
+                    <th scope="row">{{$r->nombre}}</th>
+                    <td>{{$r->dias_recoleccion}}</td>
+                    <td>
+                        <a href="/editaRecolector/{{$r->id}}">Editar</a>
+                        <a href="/borraRecolector/{{$r->id}}">Borrar</a>
+                    </td>
+                    </tr>
+                    @endforeach
+                @endif
             </tbody>
         </table>
     </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\recolectores;
 
 class RecolectoresController extends Controller
 {
@@ -13,7 +14,8 @@ class RecolectoresController extends Controller
      */
     public function index()
     {
-        return view('recolectores');
+        $r = recolectores::all();
+        return view('recolectores')->with('recolectores', $r);
     }
 
     /**
@@ -34,7 +36,12 @@ class RecolectoresController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $recolector = new recolectores;
+        $recolector->nombre = $request->nombre;
+        $recolector->dias_recoleccion = $request->dias_recoleccion;
+        $recolector->save();
+
+        return redirect('/recolectores');
     }
 
     /**
@@ -45,7 +52,10 @@ class RecolectoresController extends Controller
      */
     public function show($id)
     {
-        //
+        //buscar el dato
+        $recolector = recolectores::find($id);
+        //pasarlo a la vista
+        return view('editaRecolector')->with('recolector', $recolector);
     }
 
     /**
@@ -71,6 +81,18 @@ class RecolectoresController extends Controller
         //
     }
 
+    public function actualiza(Request $request)
+    {
+        $recolector = recolectores::find($request->id);
+        if(!is_null($recolector))
+        {
+            $recolector->nombre = $request->nombre;
+            $recolector->dias_recoleccion = $request->dias_recoleccion;
+            $recolector->save();   
+        }
+        return redirect('/recolectores');
+    }
+
     /**
      * Remove the specified resource from storage.
      *
@@ -79,6 +101,8 @@ class RecolectoresController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $recolector = recolectores::find($id);
+        $recolector->delete();
+        return redirect('/recolectores');
     }
 }

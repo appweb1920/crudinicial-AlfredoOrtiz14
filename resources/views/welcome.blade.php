@@ -19,9 +19,6 @@
             <li class="nav-item">
                 <a class="nav-link" href="/recolectores">Recolectores</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Pricing</a>
-            </li>
         </ul>
     </nav>
 
