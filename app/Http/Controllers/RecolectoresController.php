@@ -13,7 +13,7 @@ class RecolectoresController extends Controller
      */
     public function index()
     {
-        //
+        return view('recolectores');
     }
 
     /**

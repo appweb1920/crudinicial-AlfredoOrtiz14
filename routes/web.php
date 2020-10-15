@@ -18,3 +18,5 @@ Route::post('/reciclaje', 'PuntosController@store');
 Route::get('/editaPunto/{id}', 'PuntosController@show');
 Route::post('/edicionPunto', 'PuntosController@actualiza');
 Route::get('/borraPunto/{id}', 'PuntosController@destroy');
+
+Route::get('/recolectores', 'RecolectoresController@index');

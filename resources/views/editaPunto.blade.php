@@ -17,7 +17,7 @@
                 <a class="nav-link" href="/">Puntos de reciclaje <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Recolectores</a>
+                <a class="nav-link" href="/recolectores">Recolectores</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Pricing</a>
