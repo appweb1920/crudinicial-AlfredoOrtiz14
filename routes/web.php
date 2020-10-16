@@ -24,3 +24,7 @@ Route::post('/nuevoRecolector', 'RecolectoresController@store');
 Route::get('/editaRecolector/{id}', 'RecolectoresController@show');
 Route::post('/edicionRecolector', 'RecolectoresController@actualiza');
 Route::get('/borraRecolector/{id}', 'RecolectoresController@destroy');
+
+Route::get('/relacionarPunto/{id}', 'DetalleController@show');
+Route::post('/nuevoDetalle', 'DetalleController@store');
+Route::get('/borraDetalle/{id}', 'RecolectoresController@destroy');

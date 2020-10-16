@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\detalle_recolector;
+use App\recolectores;
+use App\puntos;
 
 class DetalleController extends Controller
 {
@@ -13,7 +16,7 @@ class DetalleController extends Controller
      */
     public function index()
     {
-        //
+        return view('relacionarPunto');
     }
 
     /**
@@ -34,7 +37,13 @@ class DetalleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $detalle = new detalle_recolector;
+        //dd($request);
+        $detalle->id_punto = $request->id_punto;
+        $detalle->id_recolector = $request->id_recolector;
+        $detalle->save();
+
+        return redirect('/relacionarPunto/'.$detalle->id_recolector);
     }
 
     /**
@@ -45,7 +54,11 @@ class DetalleController extends Controller
      */
     public function show($id)
     {
-        //
+        //buscar el dato
+        //$detalle = detalle_recolector::find($id);
+        $recolector = recolectores::find($id);
+        //pasarlo a la vista
+        return view('relacionarPunto')->with('recolector', $recolector);
     }
 
     /**
