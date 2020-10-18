@@ -27,4 +27,4 @@ Route::get('/borraRecolector/{id}', 'RecolectoresController@destroy');
 
 Route::get('/relacionarPunto/{id}', 'DetalleController@show');
 Route::post('/nuevoDetalle', 'DetalleController@store');
-Route::get('/borraDetalle/{id}', 'RecolectoresController@destroy');
+Route::get('/borraDetalle/{id}', 'DetalleController@destroy');

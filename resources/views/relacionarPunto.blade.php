@@ -63,7 +63,9 @@
                     <th scope="row">{{$recolector->nombre}}</th>
                     <td>{{$p->tipo_basura}}</td>
                     <td>
-                        <a href="">Borrar</a>
+                        @foreach($recolector->getDetalles($p->id) as $d)
+                            <a href="/borraDetalle/{{$d->id}}">Borrar</a>
+                        @endforeach
                     </td>
                     </tr>
                     @endforeach

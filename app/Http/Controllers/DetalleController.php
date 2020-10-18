@@ -92,6 +92,9 @@ class DetalleController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $detalle = detalle_recolector::find($id);
+        $id_rec = $detalle->id_recolector;
+        $detalle->delete();
+        return redirect('/relacionarPunto/'.$id_rec);
     }
 }
