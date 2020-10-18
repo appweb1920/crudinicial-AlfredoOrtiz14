@@ -15,5 +15,16 @@ class detalle_recolector extends Model
         ON puntos.id = detalle_recolector.id_punto WHERE detalle_recolector.id = '.$this->id);
         return $puntos;
     }
+
+    public function getRecolector($id){
+        $puntos = DB::select('SELECT puntos.id, puntos.tipo_basura FROM puntos INNER JOIN detalle_recolector 
+        ON puntos.id = detalle_recolector.id_punto WHERE detalle_recolector.id = '.$this->id);
+        return $puntos;
+    }
+
+    public function getPuntosSinRelacion(){
+        $puntos = DB::select('SELECT puntos.id, puntos.tipo_basura FROM puntos');
+        return $puntos;
+    }
     
 }

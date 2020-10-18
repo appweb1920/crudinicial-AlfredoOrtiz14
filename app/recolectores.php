@@ -27,12 +27,12 @@ class recolectores extends Model
     /*public function getPuntosSinRelacion(){
         $puntos = DB::select('SELECT puntos.id, puntos.tipo_basura FROM puntos INNER JOIN detalle_recolector 
         ON puntos.id != detalle_recolector.id_punto INNER JOIN recolectores 
-        ON recolectores.id = detalle_recolector.id_recolector WHERE recolectores.id = '. $this->id);//Esta mal pero puede servir para la edicion
+        ON recolectores.id = detalle_recolector.id_recolector WHERE recolectores.id = '. $this->id);
         return $puntos;
     }*/
 
     public function getPuntosSinRelacion(){
-        $puntos = DB::select('SELECT puntos.id, puntos.tipo_basura FROM puntos');//Esta mal pero puede servir para la edicion
+        $puntos = DB::select('SELECT puntos.id, puntos.tipo_basura FROM puntos');
         return $puntos;
     }
 }

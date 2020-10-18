@@ -61,6 +61,15 @@ class DetalleController extends Controller
         return view('relacionarPunto')->with('recolector', $recolector);
     }
 
+    public function muestraDetalle($id)
+    {
+        //buscar el dato
+        //$detalle = detalle_recolector::find($id);
+        $detalle = detalle_recolector::find($id);
+        //pasarlo a la vista
+        return view('editaRelacionar')->with('detalle', $detalle);
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -82,6 +91,18 @@ class DetalleController extends Controller
     public function update(Request $request, $id)
     {
         //
+    }
+
+    public function actualiza(Request $request)
+    {
+        $detalle = detalle_recolector::find($request->id);
+        if(!is_null($detalle))
+        {
+            $detalle->id_punto = $request->id_punto;
+            $detalle->id_recolector = $request->id_recolector;
+            $detalle->save();   
+        }
+        return redirect('/relacionarPunto/'.$detalle->id_recolector);
     }
 
     /**

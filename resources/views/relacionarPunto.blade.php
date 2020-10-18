@@ -64,6 +64,7 @@
                     <td>{{$p->tipo_basura}}</td>
                     <td>
                         @foreach($recolector->getDetalles($p->id) as $d)
+                            <a href="/edicionDetalle/{{$d->id}}">Editar</a>
                             <a href="/borraDetalle/{{$d->id}}">Borrar</a>
                         @endforeach
                     </td>
