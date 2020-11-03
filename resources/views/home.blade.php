@@ -16,6 +16,7 @@
 
                     {{ __('You are logged in!') }}
                 </div>
+                <a href="/puntos">Ver Puntos<a>
             </div>
         </div>
     </div>
