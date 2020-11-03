@@ -14,7 +14,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="/">Puntos de reciclaje<span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/puntos">Puntos de reciclaje<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item active">
                 <a class="nav-link" href="/recolectores">Recolectores</a>
@@ -23,6 +23,7 @@
     </nav>
 
     <div class="row col-lg-12">
+        @if((Auth::user()->tipo == '1'))
         <div class="col-lg-4">
             <div class="form-group m-2">
                 <form action="/nuevoDetalle" method="post">
@@ -47,6 +48,7 @@
                 </form>
             </div>
         </div>
+        @endif
 
         <table class="table table-striped mt-2 col-lg-8">
             <thead>
@@ -62,12 +64,14 @@
                     <tr>
                     <th scope="row">{{$recolector->nombre}}</th>
                     <td>{{$p->tipo_basura}}</td>
+                    @if((Auth::user()->tipo == '1'))
                     <td>
                         @foreach($recolector->getDetalles($p->id) as $d)
                             <a href="/edicionDetalle/{{$d->id}}">Editar</a>
                             <a href="/borraDetalle/{{$d->id}}">Borrar</a>
                         @endforeach
                     </td>
+                    @endif
                     </tr>
                     @endforeach
                 @endif

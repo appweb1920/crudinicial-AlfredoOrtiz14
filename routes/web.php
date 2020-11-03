@@ -13,7 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'PuntosController@index');
+Route::get('/puntos', 'PuntosController@index');
+//Route::get('/', 'PuntosController@index');
 Route::post('/reciclaje', 'PuntosController@store');
 Route::get('/editaPunto/{id}', 'PuntosController@show');
 Route::post('/edicionPunto', 'PuntosController@actualiza');
@@ -30,3 +31,10 @@ Route::post('/nuevoDetalle', 'DetalleController@store');
 Route::get('/edicionDetalle/{id}', 'DetalleController@muestraDetalle');
 Route::post('/editarDetalle', 'DetalleController@actualiza');
 Route::get('/borraDetalle/{id}', 'DetalleController@destroy');
+Auth::routes();
+
+Route::get('/', 'HomeController@index')->name('home');
+
+Route::get('/ejemplo', function () {
+    return 'Tipo NULL';
+});

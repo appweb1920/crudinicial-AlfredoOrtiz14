@@ -14,15 +14,74 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="/">Puntos de reciclaje <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/puntos">Puntos de reciclaje <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/recolectores">Recolectores</a>
             </li>
+            @guest
+                @if (Route::has('register'))
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                    </li>
+                @endif
+                @else
+                <li class="nav-item dropdown">
+                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        {{ Auth::user()->name }}
+                    </a>
+
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                                            document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+                    </div>
+                </li>
+                @endguest
         </ul>
+
+        <!--
+        <ul class="navbar-nav ml-auto">
+                        @guest
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            </li>
+                            @if (Route::has('register'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                </li>
+                            @endif
+                        @else
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }}
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                        @endguest
+                    </ul>
+        -->
     </nav>
 
     <div class="row col-lg-12">
+        @if((Auth::user()->tipo == '1'))
         <div class="col-lg-4">
             <div class="form-group m-2">
                 <form action="/reciclaje" method="post">
@@ -52,6 +111,7 @@
                 </form>
             </div>
         </div>
+        @endif
 
         <table class="table table-striped mt-2 col-lg-8">
         <thead>
@@ -72,10 +132,12 @@
                 <td>{{$p->direccion}}</td>
                 <td>{{$p->hora_apertura}}</td>
                 <td>{{$p->hora_cierre}}</td>
+                @if((Auth::user()->tipo == '1'))
                 <td>
                 <a href="/editaPunto/{{$p->id}}">Editar</a>
                 <a href="/borraPunto/{{$p->id}}">Borrar</a>
                 </td>
+                @endif
                 </tr>
                 @endforeach
             @endif

@@ -14,7 +14,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="/">Puntos de reciclaje <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/puntos">Puntos de reciclaje <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item active">
                 <a class="nav-link" href="/recolectores">Recolectores</a>
