@@ -30,6 +30,7 @@ class LoginController extends Controller
             $redirectTo='/ejemplo';
         else
             $redirectTo='/puntos';
+            
         return $redirectTo;
     }
 

@@ -47,7 +47,7 @@ class PuntosController extends Controller
         $punto->hora_cierre = $request->hora_cierre;
         $punto->save();
 
-        return redirect('/');
+        return redirect('/puntos');
         //return view('welcome')->with('t', $tipoBasura)->with('d', $direccion)->with('hA', $horaAp)->with('hC', $horaCierre);
     }
 
@@ -99,7 +99,7 @@ class PuntosController extends Controller
             $punto->hora_cierre = $request->hora_cierre;
             $punto->save();   
         }
-        return redirect('/');
+        return redirect('/puntos');
     }
 
     /**
@@ -112,6 +112,6 @@ class PuntosController extends Controller
     {
         $punto = puntos::find($id);
         $punto->delete();
-        return redirect('/');
+        return redirect('/puntos');
     }
 }
